@@ -7,7 +7,7 @@ export default function Square() {
   }
   return (
     <div
-      className="Square"
+      className="square"
       data-testid="Square"
       style={{ backgroundColor: color }}
       onClick={handleClick}

@@ -18,7 +18,7 @@ describe('click', () => {
     fireEvent.click(getByTestId('Square'));
     expect(getByTestId('Square')).toMatchInlineSnapshot(`
       <div
-        class="Square"
+        class="square"
         data-testid="Square"
         style="background-color: grey;"
       />

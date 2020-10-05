@@ -1,10 +1,10 @@
 import React from 'react';
-import Board from 'components/Board/Board.js';
+import Game from 'components/Game/Game.js';
 
 function App() {
   return (
-    <div className="App" data-testid="App">
-      <Board />
+    <div className="app" data-testid="App">
+      <Game />
     </div>
   );
 }

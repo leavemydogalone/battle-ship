@@ -5,12 +5,13 @@ body {
   margin: 0;
 }
 
-.App {
+.app {
   height: 100%;
   width: 100%;
 }
 
-.Square {
+.square,
+.pieceSquare {
   height: 28px;
   width: 28px;
   border: black 1px solid;
@@ -19,10 +20,17 @@ body {
   background-color: grey;
 }
 
-.Board {
+.board {
   height: 300px;
   width: 300px;
+  margin: 20px;
   display: inline-grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+
+.pieceDisplay {
+  height: 100px;
+  width: 100px;
+  background-color: indianred;
 }
