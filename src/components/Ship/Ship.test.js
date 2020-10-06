@@ -6,3 +6,8 @@ test('should load', () => {
   const { getByTestId } = render(<Ship />);
   getByTestId('Ship');
 });
+
+test('should render correct number of squares', () => {
+  const { getAllByTestId } = render(<Ship size={4} />);
+  expect(getAllByTestId('PieceSquare')).toHaveLength(4);
+});

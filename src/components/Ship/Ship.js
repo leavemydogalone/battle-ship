@@ -1,11 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 import PieceSquare from 'components/PieceSquare/PieceSquare.js';
 
-export default function Ship() {
+export default function Ship({ size, name, direction, isSet, handleClick }) {
+  const shipArr = new Array(size).fill(name);
+
+  const theShip = shipArr.map((thing, index) => (
+    <PieceSquare key={index} direction={direction} isSet={isSet} id={name} />
+  ));
+
   return (
-    <div data-testid="Ship">
-      <PieceSquare />
+    <div data-testid="Ship" id={name} onClick={handleClick}>
+      {theShip}
     </div>
   );
 }

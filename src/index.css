@@ -17,7 +17,7 @@ body {
   border: black 1px solid;
   padding: 0;
   margin: 0;
-  background-color: grey;
+  background-color: rgb(69, 47, 192);
 }
 
 .board {
@@ -30,7 +30,7 @@ body {
 }
 
 .pieceDisplay {
-  height: 100px;
-  width: 100px;
+  height: 250px;
+  width: 250px;
   background-color: indianred;
 }
