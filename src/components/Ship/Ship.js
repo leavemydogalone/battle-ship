@@ -10,7 +10,11 @@ export default function Ship({ size, name, direction, isSet, handleClick }) {
   ));
 
   return (
-    <div data-testid="Ship" id={name} onClick={handleClick}>
+    <div
+      data-testid="Ship"
+      id={isSet === 'no' ? name : null}
+      onClick={isSet === 'no' ? handleClick : null}
+    >
       {theShip}
     </div>
   );

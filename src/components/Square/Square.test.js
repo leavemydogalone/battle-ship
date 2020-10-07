@@ -20,7 +20,7 @@ describe('click', () => {
       <div
         class="square"
         data-testid="Square"
-        style="background-color: grey;"
+        style="background-color: red;"
       />
     `);
   });
