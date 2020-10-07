@@ -2,8 +2,9 @@ import React from 'react';
 
 // to serve as building block for ships
 export default function PieceSquare({ direction, isSet, id }) {
-  const backGround =
-    isSet === 'yes' ? { backgroundColor: 'grey' } : { backgroundColor: 'blue' };
+  const backGround = isSet
+    ? { backgroundColor: 'grey' }
+    : { backgroundColor: 'blue' };
 
   const theStyle =
     direction === 'down'
@@ -12,7 +13,7 @@ export default function PieceSquare({ direction, isSet, id }) {
 
   return (
     <div
-      id={id}
+      id={isSet ? undefined : id}
       className="pieceSquare"
       data-testid="PieceSquare"
       style={theStyle}

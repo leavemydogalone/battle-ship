@@ -3,7 +3,7 @@ import Ship from 'components/Ship/Ship.js';
 import shipArr from './shipArr';
 
 export default function PieceDisplay({
-  piecesAreSet,
+  shipInfo,
   gameStarted,
   setSelectedPiece,
   direction,
@@ -17,7 +17,7 @@ export default function PieceDisplay({
       size={thing.size}
       name={thing.name}
       direction={direction}
-      isSet={piecesAreSet[index]}
+      shipInfo={shipInfo[index]}
       handleClick={selectPiece}
       key={index}
     />
