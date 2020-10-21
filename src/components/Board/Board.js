@@ -1,17 +1,33 @@
 import React, { useState, useEffect } from 'react';
 import Square from 'components/Square/Square.js';
 
-export default function Board({ boardArr, placePiece, gameStarted }) {
-  let display = boardArr.map((thing) => (
-    <Square
-      key={thing.id}
-      id={thing.id}
-      text={thing.ship}
-      placePiece={placePiece}
-      isHit={thing.isHit}
-      gameStarted={gameStarted}
-    />
-  ));
+export default function Board({
+  theBoardArr,
+  handleClick,
+  gameStarted,
+  computerBoard,
+}) {
+  let display = computerBoard
+    ? theBoardArr.map((thing) => (
+        <Square
+          key={thing.id}
+          id={thing.id}
+          text={undefined}
+          handleClick={handleClick}
+          isHit={thing.isHit}
+          gameStarted={gameStarted}
+        />
+      ))
+    : theBoardArr.map((thing) => (
+        <Square
+          key={thing.id}
+          id={thing.id}
+          text={thing.ship}
+          handleClick={handleClick}
+          isHit={thing.isHit}
+          gameStarted={gameStarted}
+        />
+      ));
 
   return (
     <div className="board" data-testid="Board">

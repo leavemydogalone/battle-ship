@@ -1,14 +1,15 @@
 import React from 'react';
 import Ship from './Ship';
 import { render, fireEvent } from '@testing-library/react';
+const shipInfo = { name: 'L', isSet: false, isDead: false };
 
 test('should load', () => {
-  const { getByTestId } = render(<Ship />);
+  const { getByTestId } = render(<Ship size={4} shipInfo={shipInfo} />);
   getByTestId('Ship');
 });
 
 test('should render correct number of squares', () => {
-  const { getAllByTestId } = render(<Ship size={4} />);
+  const { getAllByTestId } = render(<Ship size={4} shipInfo={shipInfo} />);
   expect(getAllByTestId('PieceSquare')).toHaveLength(4);
 });
 

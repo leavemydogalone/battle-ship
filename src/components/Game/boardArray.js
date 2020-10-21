@@ -1,10 +1,9 @@
-const createBoard = (() => {
-  let boardArr = [];
-
+const createBlankBoard = () => {
+  const board = [];
   for (let i = 0; i < 100; i++) {
-    boardArr.push({ id: i, isHit: false, ship: null });
+    board.push({ id: i, isHit: false, ship: null });
   }
-  return { boardArr };
-})();
+  return board;
+};
 
-export default createBoard;
+export default createBlankBoard;

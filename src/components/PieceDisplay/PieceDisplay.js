@@ -12,6 +12,7 @@ export default function PieceDisplay({
     setSelectedPiece(event.target.id);
     console.log(event.target.id);
   }
+
   const ships = shipArr.map((thing, index) => (
     <Ship
       size={thing.size}
