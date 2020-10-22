@@ -1,4 +1,4 @@
-import createBlankBoard from './boardArray';
+import createBlankBoard from '../boardArray';
 
 describe('boardArr', () => {
   it('Should have length 100', () => {

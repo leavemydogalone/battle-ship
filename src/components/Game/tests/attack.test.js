@@ -1,5 +1,5 @@
-import attack from './attack';
-import createBlankBoard from './boardArray';
+import attack from '../attack';
+import createBlankBoard from '../boardArray';
 
 test('makes ship isHit = true', () => {
   let newBoard = createBlankBoard();

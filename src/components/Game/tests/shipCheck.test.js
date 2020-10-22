@@ -1,4 +1,4 @@
-import shipCheck from './shipCheck';
+import shipCheck from '../shipCheck';
 
 describe('new array', () => {
   let boardArr = [];

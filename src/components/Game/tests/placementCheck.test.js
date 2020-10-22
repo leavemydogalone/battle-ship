@@ -1,4 +1,4 @@
-import placementCheck from './placementCheck';
+import placementCheck from '../placementCheck';
 describe('target parameter', () => {
   test('should work', () => {
     expect(placementCheck('S1', 5, 'right', 4)).toBeTruthy();

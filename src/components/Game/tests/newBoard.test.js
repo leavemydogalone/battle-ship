@@ -1,5 +1,5 @@
-import newBoard from './newBoard';
-import createBlankBoard from './boardArray';
+import newBoard from '../newBoard';
+import createBlankBoard from '../boardArray';
 
 test('should return true', () => {
   expect(newBoard('L', '4', 'right', createBlankBoard(), 4)).toBeTruthy();
