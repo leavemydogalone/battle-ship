@@ -6,7 +6,6 @@ export default function checkDeath(boardArr, shipArr, target) {
   let numberOfDead = 0;
 
   if (theShipName) {
-    // gets the length of the ship
     shipArr.map((thing) => {
       if (theShipName === thing.name) lengthOfShip = thing.size;
     });

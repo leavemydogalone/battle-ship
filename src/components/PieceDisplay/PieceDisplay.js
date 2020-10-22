@@ -5,13 +5,13 @@ import shipArr from './shipArr';
 export default function PieceDisplay({
   shipInfo,
   gameStarted,
-  setSelectedPiece,
+  handleClick,
   direction,
 }) {
-  function selectPiece(event) {
-    setSelectedPiece(event.target.id);
-    console.log(event.target.id);
-  }
+  // function selectPiece(event) {
+  //   setSelectedPiece(event.target.id);
+  //   console.log(event.target.id);
+  // }
 
   const ships = shipArr.map((thing, index) => (
     <Ship
@@ -19,7 +19,7 @@ export default function PieceDisplay({
       name={thing.name}
       direction={direction}
       shipInfo={shipInfo[index]}
-      handleClick={selectPiece}
+      handleClick={handleClick}
       key={index}
     />
   ));

@@ -29,6 +29,5 @@ export default function changeComputerBoard(computerBoard) {
       copyBoard = otherNew.slice();
     });
   } while (arrList[0]);
-  console.log(otherNew);
   return otherNew;
 }

@@ -1,13 +1,24 @@
 import React, { useState, useEffect } from 'react';
 
-export default function Square({ id, handleClick, isHit, gameStarted, text }) {
+export default function Square({
+  id,
+  handleClick,
+  isHit,
+  gameStarted,
+  text,
+  board,
+}) {
   const [color, setColor] = useState('grey');
-  if (isHit && !text) setColor('black');
-  if (isHit && text) setColor('red');
+
+  useEffect(() => {
+    if (isHit && !text) setColor('black');
+    if (isHit && text) setColor('red');
+  }, [isHit]);
 
   useEffect(() => {
     if (gameStarted) setColor('blue');
   }, [gameStarted]);
+
   return (
     <div
       id={id}
@@ -16,7 +27,7 @@ export default function Square({ id, handleClick, isHit, gameStarted, text }) {
       style={{ backgroundColor: color }}
       onClick={handleClick}
     >
-      {text}
+      {board === 'player' ? text : ''}
     </div>
   );
 }

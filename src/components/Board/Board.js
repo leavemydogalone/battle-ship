@@ -12,10 +12,11 @@ export default function Board({
         <Square
           key={thing.id}
           id={thing.id}
-          text={undefined}
+          text={thing.ship}
           handleClick={handleClick}
           isHit={thing.isHit}
           gameStarted={gameStarted}
+          board={'enemy'}
         />
       ))
     : theBoardArr.map((thing) => (
@@ -26,6 +27,7 @@ export default function Board({
           handleClick={handleClick}
           isHit={thing.isHit}
           gameStarted={gameStarted}
+          board={'player'}
         />
       ));
 
