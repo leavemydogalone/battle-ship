@@ -1,13 +1,10 @@
 import React from 'react';
 
-export default function ButtonBox({ setDirection, direction }) {
-  const infoBox = (
-    <div>
-      Please click the ships to place them on the board. If they are vertical,
-      click the top-most square the ship would occupy. If horizontal, click the
-      left-most square.
-    </div>
-  );
+export default function ButtonBox({ setDirection, direction, gameStarted }) {
+  const infoBox = gameStarted
+    ? 'The game has started! Attack your enemies board!'
+    : 'Place your ships by clicking them and then clicking on a space on your board to the left';
+
   return (
     <div className="buttonBox">
       <button
@@ -16,9 +13,11 @@ export default function ButtonBox({ setDirection, direction }) {
       >
         Ship direction
       </button>
+      <br />
       <button type="button" onClick={() => console.log('reset')}>
         reset
       </button>
+      <br />
       {infoBox}
     </div>
   );

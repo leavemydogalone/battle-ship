@@ -15,7 +15,7 @@ import checkDeath from './checkDeath';
 
 export default function Game() {
   const [direction, setDirection] = useState('right');
-  const [gameStarted, setGameStarted] = useState(true);
+  const [gameStarted, setGameStarted] = useState(false);
   const [selectedPiece, setSelectedPiece] = useState(null);
   const [shipInfo, setShipInfo] = useState(createShipInfo());
   const [enemyShipInfo, setEnemyShipInfo] = useState(createShipInfo());
@@ -111,7 +111,11 @@ export default function Game() {
           handleClick={(event) => setSelectedPiece(event.target.id)}
           direction={direction}
         />
-        <ButtonBox setDirection={setDirection} direction={direction} />
+        <ButtonBox
+          setDirection={setDirection}
+          direction={direction}
+          gameStarted={gameStarted}
+        />
         <PieceDisplay
           shipInfo={enemyShipInfo}
           gameStarted={gameStarted}
