@@ -5,10 +5,13 @@ export default function ButtonBox({
   direction,
   gameStarted,
   reset,
+  gameOver,
 }) {
-  const infoBox = gameStarted
-    ? 'The game has started! Attack your enemies board!'
-    : 'Place your ships by clicking them and then clicking on a space on your board to the left';
+  const infoBox = !gameStarted
+    ? 'Place your ships by clicking them and then clicking on a space on your board to the left'
+    : gameOver
+    ? 'Game Over!'
+    : 'The game has started! Attack your enemies board!';
 
   return (
     <div className="buttonBox">

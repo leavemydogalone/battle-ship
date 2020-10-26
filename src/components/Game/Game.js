@@ -111,6 +111,13 @@ export default function Game() {
     }
   }, [playerTurn]);
 
+  useEffect(() => {
+    if (checkWin(shipInfo) || checkWin(enemyShipInfo)) {
+      setGameOver(true);
+      console.log('game over');
+    }
+  }, [playerTurn]);
+
   function reset() {
     setBoards({
       playerBoard: createBlankBoard(),
@@ -154,6 +161,7 @@ export default function Game() {
           direction={direction}
           gameStarted={gameStarted}
           reset={reset}
+          gameOver={gameOver}
         />
         <PieceDisplay
           shipInfo={enemyShipInfo}
