@@ -12,10 +12,12 @@ import changeComputerBoard from './changeComputerBoard';
 import attack from './attack';
 import makeShipDeadArray from './makeDead';
 import checkDeath from './checkDeath';
+import checkWin from './checkWin';
 
 export default function Game() {
   const [direction, setDirection] = useState('right');
   const [gameStarted, setGameStarted] = useState(false);
+  const [gameOver, setGameOver] = useState(false);
   const [selectedPiece, setSelectedPiece] = useState(null);
   const [shipInfo, setShipInfo] = useState(createShipInfo());
   const [enemyShipInfo, setEnemyShipInfo] = useState(createShipInfo());
@@ -23,6 +25,7 @@ export default function Game() {
     playerBoard: createBlankBoard(),
     computerBoard: createBlankBoard(),
   });
+  const [playerTurn, setPlayerTurn] = useState(true);
 
   function placePiece(event) {
     let length;
@@ -60,12 +63,18 @@ export default function Game() {
   }
 
   // logic for clicking a square on the board, attacking that spot
-  function attackSquare(target, targetBoard) {
+  function attackSquare(
+    target,
+    targetBoard,
+    setTargetShipInfo,
+    targetShipInfo
+  ) {
     const newBoard = attack(targetBoard, target);
     setBoards({ ...boards, targetBoard: newBoard });
 
     if (checkDeath(targetBoard, shipArr, target))
-      setEnemyShipInfo(makeShipDeadArray(targetBoard, enemyShipInfo, target));
+      setTargetShipInfo(makeShipDeadArray(targetBoard, targetShipInfo, target));
+    setPlayerTurn(false);
   }
 
   // checks to see if all of the pieces are placed and starts the game
@@ -89,6 +98,30 @@ export default function Game() {
     }
   }, [gameStarted]);
 
+  // enemy attacks after player attacks
+  useEffect(() => {
+    if (!playerTurn) {
+      attackSquare(
+        Math.floor(Math.random() * Math.floor(100)),
+        boards.playerBoard,
+        setShipInfo,
+        shipInfo
+      );
+      setPlayerTurn(true);
+    }
+  }, [playerTurn]);
+
+  function reset() {
+    setBoards({
+      playerBoard: createBlankBoard(),
+      computerBoard: createBlankBoard(),
+    });
+    setShipInfo(createShipInfo);
+    setEnemyShipInfo(createShipInfo);
+    setSelectedPiece(null);
+    setGameStarted(false);
+  }
+
   return (
     <div data-testid="Game">
       <Board
@@ -101,7 +134,12 @@ export default function Game() {
         gameStarted={gameStarted}
         computerBoard={true}
         handleClick={(event) => {
-          attackSquare(event.target.id, boards.computerBoard);
+          attackSquare(
+            event.target.id,
+            boards.computerBoard,
+            setEnemyShipInfo,
+            enemyShipInfo
+          );
         }}
       />
       <div className="row">
@@ -115,6 +153,7 @@ export default function Game() {
           setDirection={setDirection}
           direction={direction}
           gameStarted={gameStarted}
+          reset={reset}
         />
         <PieceDisplay
           shipInfo={enemyShipInfo}

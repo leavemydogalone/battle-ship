@@ -20,6 +20,8 @@ export default function PieceDisplay({
   ));
   return (
     <div className="pieceDisplay" data-testid="PieceDisplay">
+      {handleClick === null ? 'Computer Pieces' : 'Player Pieces'}
+      <br />
       {ships}
     </div>
   );

@@ -1,6 +1,11 @@
 import React from 'react';
 
-export default function ButtonBox({ setDirection, direction, gameStarted }) {
+export default function ButtonBox({
+  setDirection,
+  direction,
+  gameStarted,
+  reset,
+}) {
   const infoBox = gameStarted
     ? 'The game has started! Attack your enemies board!'
     : 'Place your ships by clicking them and then clicking on a space on your board to the left';
@@ -14,7 +19,7 @@ export default function ButtonBox({ setDirection, direction, gameStarted }) {
         Ship direction
       </button>
       <br />
-      <button type="button" onClick={() => console.log('reset')}>
+      <button type="button" onClick={reset}>
         reset
       </button>
       <br />

@@ -12,8 +12,8 @@ body {
 
 .square,
 .pieceSquare {
-  height: 28px;
-  width: 28px;
+  height: max(28px);
+  width: max(28px);
   border: black 1px solid;
   padding: 0;
   margin: 0;
@@ -21,8 +21,8 @@ body {
 }
 
 .board {
-  height: 300px;
-  width: 300px;
+  height: auto;
+  width: auto;
   margin: 20px;
   display: inline-grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
@@ -56,7 +56,3 @@ body {
   text-align: center;
   /* justify-content: space-around; */
 }
-
-/* .ship {
-  display: flex;
-} */
