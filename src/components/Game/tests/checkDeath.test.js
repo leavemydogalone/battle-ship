@@ -9,13 +9,19 @@ test('should be falsy if no ship', () => {
   expect(checkDeath(theBoard, shipArr, '7')).toBeFalsy();
 });
 
-describe('if ships squares are dead', () => {
-  test('should be true if L ship has 4 dead', () => {
-    let newB = theBoard.slice();
-    newB[5].ship = 'L';
-    newB[6].ship = 'L';
-    newB[7].ship = 'L';
-    newB[8].ship = 'L';
-    expect(checkDeath(newB, shipArr, '7')).toBeTruthy();
-  });
+test('should be true if L ship has 4 dead', () => {
+  let newB = theBoard.slice();
+  newB[5].ship = 'L';
+  newB[6].ship = 'L';
+  newB[7].ship = 'L';
+  newB[8].ship = 'L';
+  expect(checkDeath(newB, shipArr, '7')).toBeTruthy();
+  newB = null;
+});
+
+test.only('should be true if L ship has 4 dead', () => {
+  let newB = theBoard.slice();
+  newB[5].ship = 'L';
+
+  expect(checkDeath(newB, shipArr, '5')).toBeFalsy();
 });

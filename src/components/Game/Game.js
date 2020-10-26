@@ -15,7 +15,7 @@ import checkDeath from './checkDeath';
 
 export default function Game() {
   const [direction, setDirection] = useState('right');
-  const [gameStarted, setGameStarted] = useState(false);
+  const [gameStarted, setGameStarted] = useState(true);
   const [selectedPiece, setSelectedPiece] = useState(null);
   const [shipInfo, setShipInfo] = useState(createShipInfo());
   const [enemyShipInfo, setEnemyShipInfo] = useState(createShipInfo());
@@ -59,14 +59,16 @@ export default function Game() {
     setSelectedPiece(null);
   }
 
+  // logic for clicking a square on the board, attacking that spot
   function attackSquare(target, targetBoard) {
     const newBoard = attack(targetBoard, target);
-
     setBoards({ ...boards, targetBoard: newBoard });
+
     if (checkDeath(targetBoard, shipArr, target))
       setEnemyShipInfo(makeShipDeadArray(targetBoard, enemyShipInfo, target));
   }
 
+  // checks to see if all of the pieces are placed and starts the game
   useEffect(() => {
     if (shipInfo.filter((input) => input.isSet).length === 5) {
       setGameStarted(true);
@@ -75,16 +77,16 @@ export default function Game() {
 
   // setting up the enemy board and piecedisplay after the game has started
   useEffect(() => {
-    if (gameStarted)
+    if (gameStarted) {
       setBoards({
         playerBoard: boards.playerBoard,
         computerBoard: changeComputerBoard(boards.computerBoard),
       });
-    let newEnShIn = enemyShipInfo
-      .slice()
-      .map((thing) => ({ ...thing, isSet: true }));
-    setEnemyShipInfo(newEnShIn);
-    console.log(enemyShipInfo);
+      let newEnShIn = enemyShipInfo
+        .slice()
+        .map((thing) => ({ ...thing, isSet: true }));
+      setEnemyShipInfo(newEnShIn);
+    }
   }, [gameStarted]);
 
   return (

@@ -1,10 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 // to serve as building block for ships
-export default function PieceSquare({ direction, isSet, id }) {
-  const backGround = isSet
+export default function PieceSquare({ direction, isSet, id, isdead }) {
+  let backGround = isSet
     ? { backgroundColor: 'grey' }
     : { backgroundColor: 'blue' };
+  // console.log(isdead);
+  useEffect(() => {
+    // if (isdead === 'true') backGround = { backgroundColor: 'red' };
+    console.log(isdead);
+  }, [isdead]);
 
   const theStyle =
     direction === 'down'

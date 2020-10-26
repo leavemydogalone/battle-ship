@@ -10,8 +10,9 @@ export default function checkDeath(boardArr, shipArr, target) {
       if (theShipName === thing.name) lengthOfShip = thing.size;
     });
     numberOfDead = boardArr.filter((thing) => {
-      return thing.ship == theShipName;
+      return thing.ship == theShipName && thing.isHit == true;
     }).length;
+
     if (lengthOfShip === numberOfDead) isDead = true;
   }
   return isDead;
