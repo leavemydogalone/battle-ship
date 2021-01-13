@@ -1,13 +1,22 @@
+html,
 body {
   height: 100%;
   width: 100%;
-  padding: 0;
   margin: 0;
 }
 
-.app {
+body {
+  background-color: cadetblue;
+}
+
+.app,
+#root {
   height: 100%;
   width: 100%;
+}
+
+.app {
+  padding: 25px;
 }
 
 .square,
@@ -20,10 +29,20 @@ body {
   background-color: rgb(69, 47, 192);
 }
 
+.gameContainer {
+  background-color: burlywood;
+  width: 60vw;
+  min-width: 40vw;
+  padding: 10px;
+  margin: auto;
+}
+.boardRow {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 10px;
+}
+
 .board {
-  height: auto;
-  width: auto;
-  margin: 20px;
   display: inline-grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
@@ -31,7 +50,8 @@ body {
 
 .row {
   height: 200px;
-  width: 50%;
+  /* width: 50%; */
+  margin: auto;
   display: flex;
   justify-content: space-around;
 }

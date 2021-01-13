@@ -130,25 +130,28 @@ export default function Game() {
   }
 
   return (
-    <div data-testid="Game">
-      <Board
-        theBoardArr={boards.playerBoard}
-        handleClick={placePiece}
-        gameStarted={gameStarted}
-      />
-      <Board
-        theBoardArr={boards.computerBoard}
-        gameStarted={gameStarted}
-        computerBoard={true}
-        handleClick={(event) => {
-          attackSquare(
-            event.target.id,
-            boards.computerBoard,
-            setEnemyShipInfo,
-            enemyShipInfo
-          );
-        }}
-      />
+    <div data-testid="Game" className="gameContainer">
+      <div className="boardRow">
+        <Board
+          theBoardArr={boards.playerBoard}
+          handleClick={placePiece}
+          gameStarted={gameStarted}
+        />
+        <Board
+          theBoardArr={boards.computerBoard}
+          gameStarted={gameStarted}
+          computerBoard={true}
+          handleClick={(event) => {
+            attackSquare(
+              event.target.id,
+              boards.computerBoard,
+              setEnemyShipInfo,
+              enemyShipInfo
+            );
+          }}
+        />
+      </div>
+
       <div className="row">
         <PieceDisplay
           shipInfo={shipInfo}
